@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
