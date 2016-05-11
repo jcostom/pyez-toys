@@ -1,0 +1,7 @@
+system {
+    ntp {
+        {% for item in servers %}
+        server {{ item }};
+        {% endfor %}
+    }
+}
