@@ -1,2 +1,2 @@
 # pyez-toys
-Playing with Junos and the PyEZ tools
+Sandbox to play with PyEZ & GitHub
