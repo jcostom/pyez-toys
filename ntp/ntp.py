@@ -36,6 +36,8 @@ def main():
 
     print "Loading configuration changes on:", host
     try:
+        # If your devices don't already have NTP configured, comment out the
+        # next 4 lines
         set_commands = """
         delete system ntp
         """
