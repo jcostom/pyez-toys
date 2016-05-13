@@ -1,0 +1,22 @@
+---
+bgpNeighbor:
+   rpc: get-bgp-summary-information
+   args:
+      exact-instance: 'master'
+   args_key: 'exact-instance'
+   item: bgp-peer
+   key: peer-address
+   view: bgptable
+
+bgptable:
+   fields:
+      Neighbor: peer-address
+      state: peer-state
+      AS: peer-as
+   groups:
+      prefix_stats: bgp-rib
+   fields_prefix_stats:
+      active-prefix: { active-prefix-count : int }
+      received-prefix: { received-prefix-count : int }
+      accepted-prefix: { accepted-prefix-count : int }
+      suppressed-prefix: {suppressed-prefix-count : int }
