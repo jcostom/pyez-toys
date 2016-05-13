@@ -14,7 +14,12 @@ yamlfile = 'bgp_table.yml'
 def main():
     globals().update(loadyaml(yamlfile))
     dev = Device(host=host, user=user, password=password)
-    dev.open()
+    try:
+        dev.open()
+    except Exception as err:
+        print "Cannot connect to device:", err
+        return
+        
     peerTable = bgpNeighbor(dev)
     peerTable.get()
     for peer in peerTable:
