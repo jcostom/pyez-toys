@@ -12,7 +12,7 @@ password = 'juniper123'
 yamlfile = 'bgp_table.yml'
 
 def main():
-    globals().update( loadyaml(yamlfile))
+    globals().update(loadyaml(yamlfile))
     dev = Device(host=host, user=user, password=password)
     dev.open()
     peerTable = bgpNeighbor(dev)
