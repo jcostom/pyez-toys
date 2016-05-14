@@ -19,11 +19,24 @@ def main():
     except Exception as err:
         print "Cannot connect to device:", err
         return
-        
+
     peerTable = bgpNeighbor(dev)
     peerTable.get()
     for peer in peerTable:
-        print peer.items()
+        #print peer.items()
+        #print "-----"
+        #print
+        peerDict = dict(peer)
+        print "Neighbor:", peerDict["neighbor"] + ":" + peerDict["peer-as"]
+        print "    Description:", peerDict["description"]
+        print "    State:", peerDict["state"]
+        print "    RIB:", peerDict["rib-name"]
+        print "    Stats:"
+        print "        Accepted Prefixes:", peerDict["accepted-prefix"]
+        print "        Suppressed Prefixes:", peerDict["suppressed-prefix"]
+        print "        Active Prefixes:", peerDict["active-prefix"]
+        print "        Received Prefixes:", peerDict["received-prefix"]
+        print
 
     dev.close()
 
