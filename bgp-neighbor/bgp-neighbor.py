@@ -23,20 +23,20 @@ def main():
 
     peerTable = bgpNeighbor(dev)
     peerTable.get()
-    for peer in peerTable:
+    for entry in peerTable:
         #print peer.items()
         #print "-----"
         #print
-        peerDict = dict(peer)
-        print "Neighbor: {}:{}".format(peerDict["neighbor"], peerDict["peer-as"])
-        print "    Description: {}".format(peerDict["description"])
-        print "    State: {}".format(peerDict["state"])
-        print "    RIB: {}".format(peerDict["rib-name"])
+        peer = dict(entry)
+        print "Neighbor: {}:{}".format(peer["neighbor"], peer["peer-as"])
+        print "    Description: {}".format(peer["description"])
+        print "    State: {}".format(peer["state"])
+        print "    RIB: {}".format(peer["rib-name"])
         print "    Stats:"
-        print "        Accepted Prefixes: {}".format(peerDict["accepted-prefix"])
-        print "        Suppressed Prefixes: {}".format(peerDict["suppressed-prefix"])
-        print "        Active Prefixes: {}".format(peerDict["active-prefix"])
-        print "        Received Prefixes: {}".format(peerDict["received-prefix"])
+        print "        Accepted Prefixes: {}".format(peer["accepted-prefix"])
+        print "        Suppressed Prefixes: {}".format(peer["suppressed-prefix"])
+        print "        Active Prefixes: {}".format(peer["active-prefix"])
+        print "        Received Prefixes: {}".format(peer["received-prefix"])
         print
 
     dev.close()
