@@ -1,6 +1,8 @@
 # pyez-toys
 Sandbox to play with PyEZ & GitHub
 
-* ntp - Remove existing NTP servers and add new ones
+* bfd-session - pull BFD session data from routers
 
 * bgp-neighbor - pull BGP neighbor data from routers
+
+* ntp - Remove existing NTP servers and add new ones

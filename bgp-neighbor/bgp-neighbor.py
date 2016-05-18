@@ -5,6 +5,7 @@
 
 from jnpr.junos.factory import loadyaml
 from jnpr.junos import Device
+from jnpr.junos.exception import *
 
 host = 'srx1'
 user = 'autobot'
@@ -27,15 +28,15 @@ def main():
         #print "-----"
         #print
         peerDict = dict(peer)
-        print "Neighbor:", peerDict["neighbor"] + ":" + peerDict["peer-as"]
-        print "    Description:", peerDict["description"]
-        print "    State:", peerDict["state"]
-        print "    RIB:", peerDict["rib-name"]
+        print "Neighbor: {}:{}".format(peerDict["neighbor"], peerDict["peer-as"])
+        print "    Description: {}".format(peerDict["description"])
+        print "    State: {}".format(peerDict["state"])
+        print "    RIB: {}".format(peerDict["rib-name"])
         print "    Stats:"
-        print "        Accepted Prefixes:", peerDict["accepted-prefix"]
-        print "        Suppressed Prefixes:", peerDict["suppressed-prefix"]
-        print "        Active Prefixes:", peerDict["active-prefix"]
-        print "        Received Prefixes:", peerDict["received-prefix"]
+        print "        Accepted Prefixes: {}".format(peerDict["accepted-prefix"])
+        print "        Suppressed Prefixes: {}".format(peerDict["suppressed-prefix"])
+        print "        Active Prefixes: {}".format(peerDict["active-prefix"])
+        print "        Received Prefixes: {}".format(peerDict["received-prefix"])
         print
 
     dev.close()
