@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Connects to a given router, pulls BFD sessions, presents in a pretty way.
+
 from jnpr.junos import Device
 from jnpr.junos.exception import *
 from jnpr.junos.op.bfd import BfdSessionTable
