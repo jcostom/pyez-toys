@@ -2,8 +2,8 @@ BgpNeighborTable:
     rpc: get-bgp-summary-information
     item: bgp-peer
     key: peer-address
-    view: BgpTable
-BgpTable:
+    view: BgpPeerView
+BgpPeerView:
     fields:
         peer-address: peer-address
         description: description
