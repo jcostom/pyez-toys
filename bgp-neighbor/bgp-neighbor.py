@@ -10,7 +10,7 @@ from jnpr.junos.exception import *
 host = 'srx1'
 user = 'autobot'
 password = 'juniper123'
-yamlfile = 'bgp_table.yml'
+yamlfile = 'bgp_table-op.yml'
 
 def main():
     globals().update(loadyaml(yamlfile))
@@ -21,16 +21,16 @@ def main():
         print "Cannot connect to device:", err
         return
 
-    peerTable = bgpNeighbor(dev)
+    peerTable = BgpNeighborTable(dev)
     peerTable.get()
     for entry in peerTable:
         #print peer.items()
         #print "-----"
         #print
         peer = dict(entry)
-        print "Neighbor: {}:{}".format(peer["neighbor"], peer["peer-as"])
+        print "Neighbor: {}:{}".format(peer["peer-address"], peer["peer-as"])
         print "    Description: {}".format(peer["description"])
-        print "    State: {}".format(peer["state"])
+        print "    State: {}".format(peer["peer-state"])
         print "    RIB: {}".format(peer["rib-name"])
         print "    Stats:"
         print "        Accepted Prefixes: {}".format(peer["accepted-prefix"])
