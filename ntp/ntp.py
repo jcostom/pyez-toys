@@ -10,8 +10,9 @@ password = 'juniper123'
 template = 'ntp.j2'
 
 config = {
-    'servers': ['10.0.1.20','10.0.1.40']
+    'servers': ['10.0.1.20', '10.0.1.40']
 }
+
 
 def main():
     dev = Device(host=host, user=user, password=password)
@@ -23,7 +24,7 @@ def main():
         print "Cannot connect to device:", err
         return
 
-    dev.bind( cu=Config )
+    dev.bind(cu=Config)
 
     # Lock the configuration, load changes, commit
     print "Locking the configuration on:", host
@@ -62,7 +63,7 @@ def main():
     print "Committing the configuration on:", host
     try:
         dev.cu.commit()
-        #print dev.cu.diff()
+        # print dev.cu.diff()
     except CommitError:
         print "Error: Unable to commit configuration"
         print "Unlocking the configuration"

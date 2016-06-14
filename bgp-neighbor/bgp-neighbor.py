@@ -2,7 +2,7 @@
 
 # Based (heavily) on the work of @macrujugl
 # https://github.com/macrujugl/pyez
-# 
+
 
 from jnpr.junos.factory import loadyaml
 from jnpr.junos import Device
@@ -12,6 +12,7 @@ host = 'srx1'
 user = 'autobot'
 password = 'juniper123'
 yamlfile = 'bgp_table-op.yml'
+
 
 def main():
     globals().update(loadyaml(yamlfile))
@@ -25,9 +26,9 @@ def main():
     peerTable = BgpNeighborTable(dev)
     peerTable.get()
     for entry in peerTable:
-        #print peer.items()
-        #print "-----"
-        #print
+        # print peer.items()
+        # print "-----"
+        # print
         peer = dict(entry)
         print "Neighbor: {}:{}".format(peer["peer-address"], peer["peer-as"])
         print "    Description: {}".format(peer["description"])

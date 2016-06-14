@@ -10,6 +10,7 @@ host = 'srx1'
 user = 'autobot'
 password = 'juniper123'
 
+
 def main():
     dev = Device(host=host, user=user, password=password)
     try:
@@ -21,9 +22,9 @@ def main():
     bfdTable = BfdSessionTable(dev)
     bfdTable.get()
     for entry in bfdTable:
-        #print bfd.items()
-        #print "-----"
-        #print
+        # print bfd.items()
+        # print "-----"
+        # print
         bfd = dict(entry)
         print "Neighbor: {}".format(bfd["neighbor"])
         print "    Interface: {}".format(bfd["interface"])
