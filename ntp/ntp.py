@@ -43,7 +43,8 @@ def main():
         delete system ntp
         """
         dev.cu.load(set_commands, format='set')
-        dev.cu.load(template_path=template, template_vars=config, format='text')
+        dev.cu.load(template_path=template,
+                    template_vars=config, format='text')
     except ValueError as err:
         print err.message
 

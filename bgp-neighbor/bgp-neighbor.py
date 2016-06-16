@@ -36,7 +36,8 @@ def main():
         print "    RIB: {}".format(peer["rib-name"])
         print "    Stats:"
         print "        Accepted Prefixes: {}".format(peer["accepted-prefix"])
-        print "        Suppressed Prefixes: {}".format(peer["suppressed-prefix"])
+        print "        Suppressed Prefixes: " \
+            "{}".format(peer["suppressed-prefix"])
         print "        Active Prefixes: {}".format(peer["active-prefix"])
         print "        Received Prefixes: {}".format(peer["received-prefix"])
         print
