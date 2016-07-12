@@ -66,3 +66,11 @@ unit 0 {
 ### Step 4: Edit the included YAML file (acl.yml).
 
 It should be pretty self-explanatory how to maintain the info contained therein.
+
+### Step 5: Use the dynamic-acl.py script to push updates out.
+
+Change the YAML file to:
+
+* Add/change hosts
+* Add/remove blocked IPs/subnets
+* Add/remove exceptions to block list
