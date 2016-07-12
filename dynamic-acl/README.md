@@ -7,7 +7,9 @@ Got someone beating on your door trying the same attack over and over and over? 
 
 ## How to make this work
 
-### 1. Create 2 prefix-lists on your system.  First is the `block.edge` prefix-list, which is your set of blocked IP addresses or subnets. Second is `unblock.edge`, your list of exceptions to the block.edge prefix-list.
+### Step 1: Create 2 prefix-lists on your system.  
+
+First is the `block.edge` prefix-list, which is your set of blocked IP addresses or subnets. Second is `unblock.edge`, your list of exceptions to the block.edge prefix-list.
 ```
 {master:0}
 user@router> show configuration policy-options
@@ -22,7 +24,9 @@ prefix-list unblock.edge {
     3.3.3.3/32;
 }
 ```
-### 2. Create a firewall filter.  It's going to be super simple.  Essentially, it says, "drop everything to & from the blocked list, apart from the exceptions list, and allow all else."  You can (obviously) customize this to your heart's content, but this is the minimum you'll need.
+### Step 2: Create a firewall filter.  
+
+It's going to be super simple.  Essentially, it says, "drop everything to & from the blocked list, apart from the exceptions list, and allow all else."  You can (obviously) customize this to your heart's content, but this is the minimum you'll need.
 ```
 user@router> show configuration firewall family inet
 filter dynamic-block {
@@ -44,7 +48,9 @@ filter dynamic-block {
     }
 }
 ```
-### 3. Apply this filter to your external-facing interface.  Our example assumes you're using ge-0/0/0 as your external-facing interface.
+### Step 3. Apply this filter to your external-facing interface.
+
+Our example assumes you're using ge-0/0/0 as your external-facing interface.
 ```
 user@router> show configuration interfaces ge-0/0/0
 description "Peering: ISP1";
@@ -58,4 +64,6 @@ unit 0 {
     }
 }
 ```
-### 4. Edit the included YAML file (acl.yml).  It should be pretty self-explanatory how to maintain the info contained therein.
+### Step 4: Edit the included YAML file (acl.yml).
+
+It should be pretty self-explanatory how to maintain the info contained therein.
