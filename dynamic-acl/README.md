@@ -58,7 +58,6 @@ unit 0 {
     family inet {
         filter {
             input dynamic-block;
-            output dynamic-block;
         }
         address X.Y.Z.2/30;
     }
