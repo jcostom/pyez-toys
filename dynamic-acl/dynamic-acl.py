@@ -36,7 +36,6 @@ def main():
             return
         print "Loading configuration changes on:", host
         try:
-            # Script will fail unless these items already exist
             set_commands = """
             delete policy-options prefix-list block.edge
             delete policy-options prefix-list unblock.edge
