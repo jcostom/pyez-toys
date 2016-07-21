@@ -1,4 +1,4 @@
-# Dynamic ACLs for Junos
+# Automated Network Nitwit Filter for Junos
 Rid yourself of annoying traffic across many systems in a snap.
 
 ## The problem? Nuisance traffic.
@@ -29,7 +29,7 @@ prefix-list unblock.edge {
 It's going to be super simple.  Essentially, it says, "drop everything to & from the blocked list, apart from the exceptions list, and allow all else."  You can (obviously) customize this to your heart's content, but this is the minimum you'll need.
 ```
 user@router> show configuration firewall family inet
-filter dynamic-block {
+filter network-nitwit-block {
     term 1 {
         from {
             prefix-list {
