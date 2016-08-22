@@ -1,9 +1,9 @@
-# Automated Network Nitwit Filter for Junos
+# Automated Network Edge Filter for Junos
 Rid yourself of annoying traffic across many systems in a snap.
 
 ## The problem? Nuisance traffic.
 
-Got someone beating on your door trying the same attack over and over and over?  Someone who thinks it's fun to run nmap scans all day against your network?  Dump their traffic with a simple firewall filter at the edge.
+Got someone beating on your door trying the same attack over and over and over?  Someone who thinks it's fun to run nmap scans all day against your network? Dump their traffic with a simple firewall filter at the edge.
 
 ## How to make this work
 
