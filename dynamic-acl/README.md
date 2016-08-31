@@ -9,16 +9,16 @@ Got someone beating on your door trying the same attack over and over and over? 
 
 ### Step 1: Create 2 prefix-lists on your system.  
 
-First is the `block.edge` prefix-list, which is your set of blocked IP addresses or subnets. Second is `unblock.edge`, your list of exceptions to the block.edge prefix-list.
+First is the `edge-block` prefix-list, which is your set of blocked IP addresses or subnets. Second is `edge-block-exceptions`, your list of exceptions to the edge-block prefix-list.
 ```
 {master:0}
 user@router> show configuration policy-options
-prefix-list block.edge {
+prefix-list edge-block {
     1.1.1.0/24;
     2.2.2.0/24;
     3.3.3.0/24;
 }
-prefix-list unblock.edge {
+prefix-list edge-block-exceptions {
     1.1.1.1/32;
     2.2.2.2/32;
     3.3.3.3/32;
@@ -29,12 +29,12 @@ prefix-list unblock.edge {
 It's going to be super simple.  Essentially, it says, "drop everything to & from the blocked list, apart from the exceptions list, and allow all else."  You can (obviously) customize this to your heart's content, but this is the minimum you'll need.
 ```
 user@router> show configuration firewall family inet
-filter network-nitwit-block {
+filter internet-edge-block {
     term 1 {
         from {
             prefix-list {
-                block.edge;
-                unblock.edge except;
+                edge-block;
+                edge-block-exceptions except;
             }
         }
         then {
@@ -57,7 +57,7 @@ description "Peering: ISP1";
 unit 0 {
     family inet {
         filter {
-            input dynamic-block;
+            input internet-edge-block;
         }
         address X.Y.Z.2/30;
     }

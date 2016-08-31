@@ -1,11 +1,11 @@
 policy-options {
-    prefix-list block.edge {
+    prefix-list edge-block {
         {% for ip in blocked %}
         {{ ip }};
         {% endfor %}
     }
-    prefix-list unblock.edge {
-        {% for ip in unblocked %}
+    prefix-list edge-block-exceptions {
+        {% for ip in exceptions %}
         {{ ip }};
         {% endfor %}
     }
