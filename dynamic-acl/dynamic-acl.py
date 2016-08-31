@@ -37,8 +37,8 @@ def main():
         print "Loading configuration changes on:", host
         try:
             set_commands = """
-            delete policy-options prefix-list block.edge
-            delete policy-options prefix-list unblock.edge
+            delete policy-options prefix-list edge-block
+            delete policy-options prefix-list edge-block-exceptions
             """
             dev.cu.load(set_commands, format='set')
             dev.cu.load(template_path=template,
