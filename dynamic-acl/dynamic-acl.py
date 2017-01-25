@@ -77,5 +77,6 @@ def main():
         print "Closing connection to:", host
         dev.close()
 
+
 if __name__ == "__main__":
     main()

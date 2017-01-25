@@ -12,6 +12,7 @@ user = 'autobot'
 password = 'juniper123'
 yamlfile = 'bgp_table-op.yml'
 
+
 def main():
     globals().update(loadyaml(yamlfile))
     dev = Device(host=host, user=user, password=password)
@@ -29,6 +30,7 @@ def main():
         print
 
     dev.close()
+
 
 if __name__ == "__main__":
     main()
