@@ -25,7 +25,9 @@ def main():
             return
         print "System: {} / {} / {}" \
             .format(host, dev.facts['model'], dev.facts['serialnumber'])
-        print (json.dumps(ModuleTable(dev).get().items()))
+        print (json.dumps(ModuleTable(dev).get().items(), sort_keys=False,
+                          indent=4, separators=(',', ': ')))
+        # print (yaml.dump(ModuleTable(dev).get().items()))
         dev.close()
 
 
