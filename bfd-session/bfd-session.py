@@ -6,7 +6,7 @@ from jnpr.junos import Device
 from jnpr.junos.exception import *
 from jnpr.junos.op.bfd import BfdSessionTable
 
-host = 'srx1'
+host = 'router1'
 user = 'autobot'
 password = 'juniper123'
 
