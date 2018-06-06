@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from jnpr.junos import Device
 from jnpr.junos.op.inventory import ModuleTable
@@ -21,15 +21,15 @@ def main():
         try:
             dev.open()
         except Exception as err:
-            print "Cannot connect to device:", err
+            print("Cannot connect to device: {}".format(err))
             return
-        print "System: {} / {} / {}" \
-            .format(host, dev.facts['model'], dev.facts['serialnumber'])
+        print("System: {} / {} / {}"
+              .format(host, dev.facts['model'], dev.facts['serialnumber']))
         # Pretty output
-        print (json.dumps(ModuleTable(dev).get().items(), sort_keys=False,
-                          indent=4, separators=(',', ': ')))
+        # print(json.dumps(ModuleTable(dev).get().items(), sort_keys=False,
+        #       indent=4, separators=(',', ': ')))
         # Dense output
-        # print (json.dumps(ModuleTable(dev).get().items()))
+        print(json.dumps(ModuleTable(dev).get().items()))
         dev.close()
 
 
