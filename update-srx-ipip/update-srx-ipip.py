@@ -4,7 +4,6 @@ from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
 from jnpr.junos.exception import *
 from jinja2 import Template
-from requests import get
 import sys
 
 # If testing, you can feed IP on the CLI as an arg, or you could always
@@ -17,11 +16,6 @@ user = 'autobot'
 password = 'juniper123'
 host = 'router1'
 vars = {'ip': myip}
-
-# Hurrican Electric Tunnel Info
-he_user = 'heuser'
-he_pass = 'hepass'
-he_tunnelid = 'tunnelid'
 
 # Prepare J2 Template
 template = """
@@ -96,13 +90,6 @@ def main():
         print("Error: Unable to unlock configuration")
 
     dev.close()
-
-    # Update HE Tunnel
-    he_url = "https://ipv4.tunnelbroker.net/nic/update?username=" + he_user + \
-        "&password=" + he_pass + "&hostname=" + he_tunnelid + \
-        "&myip=" + myip
-    he_update = get(he_url).text
-    print(he_update)
 
 
 if __name__ == "__main__":
