@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+# I'm using this as an updater script that gets executed by ddclient after it does its update of Dynamic IP.
+# My use case is an IP-IP tunnel from tunnelbroker.net that provides v6 connectivity to my home.
+# Hey Verizon, get with it on the FiOS network. Cough-cough...
+
 from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
 from jnpr.junos.exception import *
@@ -7,7 +11,7 @@ from jinja2 import Template
 import sys
 
 # If testing, you can feed IP on the CLI as an arg, or you could always
-# determine it on the fly with the 2 lines belowself.
+# determine it on the fly with the 2 lines below.
 
 # myip = get('http://ipv4.icanhazip.com/').text.rstrip()
 myip = sys.argv[1]
