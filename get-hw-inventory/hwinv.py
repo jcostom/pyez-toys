@@ -10,7 +10,7 @@ user = 'autobot'
 password = 'juniper123'
 vars = 'hosts.yml'
 
-config = yaml.load(open(vars).read())
+config = yaml.load(open(vars).read(), Loader=yaml.FullLoader)
 
 
 def main():
