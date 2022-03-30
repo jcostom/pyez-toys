@@ -29,13 +29,13 @@ args = parser.parse_args()
 
 def main():
     disableCommand = " ".join(
-        ["set interfaces", args.port, "disable"]
+        ("set interfaces", args.port, "disable")
     )
     disableComment = " ".join(
-        ["shut port", args.port]
+        ("shut port", args.port)
     )
     rollbackComment = " ".join(
-        ["rollback shut of port", args.port]
+        ("rollback shut of port", args.port)
     )
 
     dev = Device(host=args.switch, user=args.user)
