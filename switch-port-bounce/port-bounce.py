@@ -20,9 +20,9 @@ from jnpr.junos.utils.config import Config
 # Setup logger
 logger = logging.getLogger()
 ch = logging.StreamHandler()
-logger.setLevel(logging.INFO)
-ch.setLevel(logging.INFO)
-formatter = logging.Formatter('[%(levelname)s] %(message)s')
+logger.setLevel(logging.ERROR)
+ch.setLevel(logging.ERROR)
+formatter = logging.Formatter('[%(asctime)s] %(message)s')
 ch.setFormatter(formatter)
 logger.addHandler(ch)
 
@@ -51,21 +51,21 @@ def main():
     )
 
     dev = Device(host=args.switch, user=args.user)
-    logger.info("Connecting to: {}".format(args.switch))
+    logger.error("Connecting to: {}".format(args.switch))
     dev.open()
     dev.bind(cu=Config)
-    logger.info("Locking the configuration on: {}".format(args.switch))
+    logger.error("Locking the configuration on: {}".format(args.switch))
     dev.cu.lock()
-    logger.info("Now shutting port: {}".format(args.port))
+    logger.error("Now shutting port: {}".format(args.port))
     dev.cu.load(disableCommand, format='set')
     dev.cu.commit(comment=disableComment, timeout=180)
-    logger.info("Now executing rollback on: {}".format(args.switch))
+    logger.error("Now executing rollback on: {}".format(args.switch))
     dev.cu.rollback(rb_id=1)
     dev.cu.commit(comment=rollbackComment, timeout=180)
-    logger.info("Unlocking the configuration on: {}".format(args.switch))
+    logger.error("Unlocking the configuration on: {}".format(args.switch))
     dev.cu.unlock()
     dev.close()
-    logger.info("Done!")
+    logger.error("Done!")
 
 
 if __name__ == "__main__":
