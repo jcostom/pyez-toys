@@ -11,8 +11,18 @@
 
 import argparse
 import os
+import logging
 from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
+
+# Setup logger
+logger = logging.getLogger()
+ch = logging.StreamHandler()
+logger.setLevel(logging.INFO)
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter('[%(levelname)s] %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
 
 parser = argparse.ArgumentParser(
     description='Juniper Switch Port Bounce Utility'
@@ -29,31 +39,31 @@ args = parser.parse_args()
 
 def main():
     disableCommand = " ".join(
-        ("set interfaces", args.port, "disable")
+        ["set interfaces", args.port, "disable"]
     )
     disableComment = " ".join(
-        ("shut port", args.port)
+        ["shut port", args.port]
     )
     rollbackComment = " ".join(
-        ("rollback shut of port", args.port)
+        ["rollback shut of port", args.port]
     )
 
     dev = Device(host=args.switch, user=args.user)
-    print("Connecting to: {}".format(args.switch))
+    logger.info("Connecting to: {}".format(args.switch))
     dev.open()
     dev.bind(cu=Config)
-    print("Locking the configuration on: {}".format(args.switch))
+    logger.info("Locking the configuration on: {}".format(args.switch))
     dev.cu.lock()
-    print("Now shutting port: {}".format(args.port))
+    logger.info("Now shutting port: {}".format(args.port))
     dev.cu.load(disableCommand, format='set')
     dev.cu.commit(comment=disableComment, timeout=180)
-    print("Now executing rollback on: {}".format(args.switch))
+    logger.info("Now executing rollback on: {}".format(args.switch))
     dev.cu.rollback(rb_id=1)
     dev.cu.commit(comment=rollbackComment, timeout=180)
-    print("Unlocking the configuration on: {}".format(args.switch))
+    logger.info("Unlocking the configuration on: {}".format(args.switch))
     dev.cu.unlock()
     dev.close()
-    print("Done!")
+    logger.info("Done!")
 
 
 if __name__ == "__main__":
