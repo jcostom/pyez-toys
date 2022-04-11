@@ -6,8 +6,10 @@
 # disable/commit/enable/commit dance manually?
 # This does the work for you.
 # Yes, you could also drop to a root shell and
-# use ifconfig, but JTAC might give you stern looks
-# for doing that.
+# use ifconfig, but JTAC doesn't exactly look
+# fondly on that. So don't do that. Plus, "unexpected"
+# consequences could occur from that, and who likes those?
+# So do this, ok?
 
 import argparse
 import os
